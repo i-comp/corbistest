@@ -1,0 +1,31 @@
+{% load staticfiles %}
+
+<script src="{% static "js/jquery.js" %}"></script>
+<script src="{% static "app/js/js.js" %}"></script>
+
+
+<form name='agregar' method="post">
+	{% csrf_token %}
+	{{form}}
+	<input type="submit" value="Add" id="add" />
+</form>
+
+<table>
+    <tr>
+        <td>Codigo</td>
+        <td>Nombre</td>
+        <td>Creado</td>
+        <td>Cantidad</td>
+    </tr>
+	{% for producto in productos %}
+    <tr>
+		<td><input class="codigo product-{{producto.id}}" type="text" value="{{producto.codigo}}" disabled><br></td>
+		<td><input class="nombre product-{{producto.id}}" type="text" value="{{producto.nombre}}" disabled><br></td>
+		<td>{{producto.creado}}</td>
+		<td><input class="cantidad product-{{producto.id}}" type="text" value="{{producto.cantidad}}" disabled><br></td>
+		<td>
+			<input data-id={{producto.id}} type="submit" class="edit" name="comment"
+    			value="Editar" id="edit" />
+		</td>	
+	</tr>
+	{% endfor %}
