@@ -16,7 +16,7 @@ function getCookie(name) {
 
 $(document).ready( function() {
     $(".edit").click( function(event) {
-    	var state = $('#edit').val();
+    	var state = $(this).val();
    		var id = $(this).data('id');
     	if (state == "Editar") {
     		$('.product-' + id).removeAttr('disabled');
